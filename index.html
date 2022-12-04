@@ -1,10 +1,18 @@
+# パッケージのインストール
+!pip install -e git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers
+!pip install pytorch_lightning tensorboard==2.9.1 omegaconf einops taming-transformers==0.0.1 clip transformers kornia test-tube
+!pip install diffusers invisible-watermark
+
+# StableDiffusion のインストール
 !git clone https://github.com/CompVis/stable-diffusion.git
 %cd stable-diffusion
 !pip install -e .
 %mkdir outputs
 
+# Anythingv3.0 のモデルデータを取得
 !wget https://huggingface.co/Linaqruf/anything-v3.0/resolve/main/Anything-V3.0-pruned.ckpt
 
+# テキストからの画像生成
 !python scripts/txt2img.py \
     --plms \
     --ckpt ./Anything-V3.0-pruned.ckpt \
