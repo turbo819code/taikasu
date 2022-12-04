@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>TAIKASU 公式</title>
-  </head>
-  <body>
-    <h1>たいカス-TAIKASU 公式ホームページ</h1>
-    <p>このサイトはたいカスのたいカスによるたいカスのためのサイトです。</p>
-    <h2>Q,たいカスとは？  -What is Taikasu?</h2>
-    <h3>A,たいカスとは太鼓中毒を意味します。  -Taikasu means TAIKOTYUUDOKU.</h3>
-  </body>
-</html>
+!git clone https://github.com/CompVis/stable-diffusion.git
+%cd stable-diffusion
+!pip install -e .
+%mkdir outputs
+
+!wget https://huggingface.co/Linaqruf/anything-v3.0/resolve/main/Anything-V3.0-pruned.ckpt
+
+!python scripts/txt2img.py \
+    --plms \
+    --ckpt ./Anything-V3.0-pruned.ckpt \
+    --skip_grid \
+    --n_samples 1  \
+    --n_iter 1 \
+    --outdir outputs \
+    --ddim_steps 100 \
+    --prompt "cute cat ear maid"
